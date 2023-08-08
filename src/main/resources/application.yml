@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+    bootstrap-servers: "localhost:9092"
+
+logging:
+  level:
+    root: INFO
