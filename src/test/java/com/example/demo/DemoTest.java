@@ -78,8 +78,8 @@ class DemoTest {
     private void sendInSpan() throws Exception {
         var span = tracer.nextSpan().name("my-trace").start();
         try (var scope = tracer.withSpan(span)) {
-            tracer.createBaggage(BAGGAGE_KEY, BAGGAGE_VALUE);
-            tracer.createBaggage(OTHER_BAGGAGE_KEY, OTHER_BAGGAGE_VALUE);
+            tracer.createBaggageInScope(BAGGAGE_KEY, BAGGAGE_VALUE);
+            tracer.createBaggageInScope(OTHER_BAGGAGE_KEY, OTHER_BAGGAGE_VALUE);
             kafkaTemplate.send(TOPIC, value).get();
         }finally {
             span.end();
